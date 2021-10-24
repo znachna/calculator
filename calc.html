@@ -12,20 +12,19 @@
                 justify-content: center;
                 flex-direction: column;
                 font-size: 1vw;
-                width: 20vw;
-                height: 50vh;
+                width: 20vmax;
+                height: 25vmax;
                 margin: 5% 40% 0 40%;
                 background-color: aqua;
             }
             .calcScreen{
-                font-size: 2vw;
                 max-width: 100%;   
-                height: 21%;
+                height: 6.7vmax;
                 background-color:lightblue;
                 border: 1px solid black;
             }
             #screen{
-                font-size: 2vw;
+                font-size: 2vmax;
                 text-align: center;
             }
             .buttons{
@@ -41,7 +40,8 @@
                 background-color: blue;
             }
             button{
-                font-size: 1.2vw;
+                transition-duration: 200ms;
+                font-size: 1.2vmax;
                 height: auto ;
                 width: 25%;
                 background-color:lightskyblue;
@@ -49,9 +49,16 @@
                 border-right: none;
             }
             button:hover{
+                color: white;
                 background-color: skyblue;
                 padding-bottom: 2%;
                 padding-left: 1%;
+            }
+            button:active{
+                transition-duration: 400ms;
+                color:black;
+                background-color: lightskyblue;
+                padding: 0;
             }
             button:last-child{
                 border-right: 1px solid black;
