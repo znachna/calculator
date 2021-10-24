@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <style>
+            body{
+                margin: 0;
+                padding: 0;
+            }
+            .calculator{
+                display: flex;
+                justify-content: center;
+                flex-direction: column;
+                font-size: 1vw;
+                width: 20vw;
+                height: 50vh;
+                margin: 5% 40% 0 40%;
+                background-color: aqua;
+            }
+            .calcScreen{
+                font-size: 2vw;
+                max-width: 100%;   
+                height: 21%;
+                background-color:lightblue;
+                border: 1px solid black;
+            }
+            #screen{
+                font-size: 2vw;
+                text-align: center;
+            }
+            .buttons{
+                display: flex;
+                height:79%;
+                flex-direction:column;
+                background-color: black;
+            }
+            .buttonsSeries{
+                display: flex;
+                width: 100%;
+                height: 20%;
+                background-color: blue;
+            }
+            button{
+                font-size: 1.2vw;
+                height: auto ;
+                width: 25%;
+                background-color:lightskyblue;
+                border-top: none;
+                border-right: none;
+            }
+            button:hover{
+                background-color: skyblue;
+                padding-bottom: 2%;
+                padding-left: 1%;
+            }
+            button:last-child{
+                border-right: 1px solid black;
+            }
+            #equal{
+                width: 100%;
+            }
+            #deleteSymbol{
+                width: 50%;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="calculator">
+            <div class="calcScreen">
+                <p id="screen">
+                    
+                </p>
+            </div>
+            <div class="buttons">
+                <div class="buttonsSeries">
+                    <button id="addition">
+                        +
+                    </button>
+                    <button id="multiplication">
+                        *
+                    </button>
+                    <button id="division">
+                        /
+                    </button>
+                    <button id="subtraction">
+                        -
+                    </button>   
+                </div>
+                <div class="buttonsSeries">
+                    <button id="leftBracket">
+                        (
+                    </button>
+                    <button id="exp">
+                        ^
+                    </button>
+                    <button id="clean">
+                        C
+                    </button>
+                    <button id="rightBracket">
+                        )
+                    </button>
+                </div>
+                <div class="buttonsSeries">
+                    <button id="nine">
+                        9
+                    </button>
+                    <button id="deleteSymbol">
+                        ⌫
+                    </button>
+                    <button id="zero">
+                        0
+                    </button> 
+                </div>
+                <div class="buttonsSeries">
+                    <button id="one">
+                        1
+                    </button>
+                    <button id="two">
+                        2
+                    </button>
+                    <button id="three">
+                        3
+                    </button>
+                    <button id="four">
+                        4
+                    </button>
+                </div>
+                <div class="buttonsSeries">
+                    <button id="five">
+                        5
+                    </button>
+                    <button id="six">
+                        6
+                    </button>
+                    <button id="seven">
+                        7
+                    </button>
+                    <button id="eight">
+                        8
+                    </button>
+                </div>
+                <div class="buttonsSeries">
+                    <button id="equal">
+                        =
+                    </button>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script src="calculator.js">
+    </script>
+</html>
