@@ -74,22 +74,19 @@ let problem = {
             let result;
             if(this.mathView || this.mathView==0){
                 if(this.isOverMaxLength(this.mathView)){
+                    let temporalView = new String("…");
                     if(this.mathView.includes("e")){
-                        let temporalView = new String();
                         temporalView = this.mathView.slice(this.mathView.indexOf("e"));
-                        this.screenView = this.mathView.slice(0, this.maxLength-temporalView.length) + temporalView;
-                    } else this.screenView = this.mathView.slice(0, this.maxLength);
+                    } 
+                    this.screenView = this.mathView.slice(0, this.maxLength-temporalView.length) + temporalView;
                 }
-                else this.screenView = this.mathView;
-                if(this.isOverMaxLength(this.mathView)){
-                    result = this.screenView;
-                    this.clearView();
-                } 
-                else{ 
-                    this.mathView = this.screenView;
+                else if (this.mathView!="Infinity"){
+                    this.screenView = this.mathView;
                     this.length = this.screenView.length;
-                    result = this.mathView;
-                }
+                    return this.mathView;
+                } 
+                result = this.screenView;
+                this.clearView();
                 return result;
             }
             else throw new Error("Ошибка при расчете");
