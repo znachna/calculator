@@ -55,9 +55,11 @@ let problem = {
             this.clearView();
         }
         else if(button.id=="deleteSymbol"){
-            this.length--;
-            this.mathView = this.mathView.slice(0, this.length);
-            this.screenView = this.screenView.slice(0, this.length);
+            if(this.length){
+                this.length--;
+                this.mathView = this.mathView.slice(0, this.length);
+                this.screenView = this.screenView.slice(0, this.length);
+            }
         }
         else{
             this.length++;
@@ -69,30 +71,41 @@ let problem = {
     getAnswer(){
         try{
             this.mathView = eval(this.mathView).toString();
+            let result;
             if(this.mathView || this.mathView==0){
-                if(this.isOverMaxLength(this.mathView.length)){
+                if(this.isOverMaxLength(this.mathView)){
                     if(this.mathView.includes("e")){
                         let temporalView = new String();
                         temporalView = this.mathView.slice(this.mathView.indexOf("e"));
-                        this.mathView = this.mathView.slice(0, this.maxLength-temporalView.length);
-                        return this.mathView + temporalView;
-                    }
-                    return this.mathView.slice(0, this.maxLength);
+                        this.screenView = this.mathView.slice(0, this.maxLength-temporalView.length) + temporalView;
+                    } else this.screenView = this.mathView.slice(0, this.maxLength);
                 }
-                else return this.mathView;
+                else this.screenView = this.mathView;
+                if(this.isOverMaxLength(this.mathView)){
+                    result = this.screenView;
+                    this.clearView();
+                } 
+                else{ 
+                    this.mathView = this.screenView;
+                    this.length = this.screenView.length;
+                    result = this.mathView;
+                }
+                return result;
             }
-            else return "Ошибка при расчете";
+            else throw new Error("Ошибка при расчете");
         }
-        catch{
+        catch(e){
+            this.clearView();
+            if(e.message == "Ошибка при расчете") return e.message; 
             return "Неправильный ввод";
         }
-        finally {
-            this.clearView();
+        finally{
+
         }
     },
 
     getScreenView(){
-        if (this.isOverMaxLength(this.length)){
+        if (this.isOverMaxLength(this.screenView)){
             this.clearView();
             return "Длинное выражение";
         }
@@ -105,8 +118,8 @@ let problem = {
         this.screenView = "";
     },
 
-    isOverMaxLength(length){
-        return length>this.maxLength;
+    isOverMaxLength(view){
+        return view.length>this.maxLength;
     }    
 }
 
